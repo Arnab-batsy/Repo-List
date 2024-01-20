@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Repo List</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>This is a GitHub Repositories Listing page</h1>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="search">
+      <input type="text" id="search-box" placeholder="Enter username"/>
+      <button onclick="getUserData()" type="submit">Search</button>
+    </div>
+
+    <div class="home-page">
+      <div class="profile">
+        <div id="image" class="image-container"></div>
+        <div id="details"></div>
+      </div>
+      <div class="url"></div>
+      <div class="repos"></div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="index.js" charset="utf-8"></script>
-</body>
+  </body>
 </html>
