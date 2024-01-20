@@ -16,17 +16,20 @@ const getUserData = async () => {
   const totalRepos = userData.public_repos;
   const totalPages = Math.ceil(totalRepos / 10);
 
-  $(".url").html(`<p>${userData.url}</p>`);
+  $(".url").html(
+    `<p><img src="Assets/link.png" height="13px"/> <a href="${userData.html_url}" target="_blank" style="text-decoration: none; color: inherit; cursor: pointer;">${userData.html_url}</a></p>`
+  );
   $("#image").html(`<img src=${userData.avatar_url} />`);
   $("#details").html(`<h1>${userData.name}</h1>
     <p>${userData.bio}</p>
-    <p>Location: ${userData.location}</p>
+    <p><img src="Assets/location-pin.png" height="13px"/> ${userData.location}</p>
     <p>Followers: ${userData.followers}</p>`);
 
   const Repo = await fetch(API + user + "/repos" + `?per_page=${perPage}`);
   const data = await Repo.json();
-//   console.log(data);
+  console.log(data);
   displayRepos(data);
+  createRequiredPage(totalPages);
 };
 
 function displayRepos(repos) {
