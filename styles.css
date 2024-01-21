@@ -1,15 +1,22 @@
 body {
   background-color: #f5f6fa;
+  color: #424769;
   font-family: "Montserrat", sans-serif;
   display: flex;
   flex-direction: column;
 }
 
-.search{
-    margin: 15px auto;
+.search {
+  margin: 15px auto;
 }
 
 .profile {
+  visibility: hidden;
+  background-color: white;
+  width: 86%;
+  margin: 10px auto;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
   display: flex;
   justify-content: space-around;
   padding-right: 10%;
@@ -23,9 +30,11 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.url{
-    margin: none;
-    margin-left: 18px;
+.url {
+  display: flex;
+  color: #a3a3a3;
+  justify-content: center;
+  align-items: center;
 }
 
 .repos {
@@ -36,9 +45,21 @@ body {
 
 .repository {
   margin: 10px;
-  border: 1px solid black;
-  padding: 10px;
+  background: #fff;
+  color: #a3a3a3;
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  padding: 20px;
 }
+
+.repository a {
+  /* text-decoration: none;  */
+  color: #424769;
+  cursor: pointer;
+}
+
 .repository button {
   padding: 10px 20px;
   margin-right: 10px;
@@ -65,14 +86,13 @@ body {
 .btn--primary {
   background: #7f8ff4;
   color: #fff;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   padding: 12px 36px;
 }
 
-
 .btn--primary:active {
-  box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+  box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn--inside {
@@ -85,13 +105,13 @@ body {
   background: #fff;
   color: #a3a3a3;
   font: inherit;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
   border: 0;
   outline: 0;
   padding: 22px 18px;
 }
 
-.repo-count{
+.repo-count {
   color: #a3a3a3;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -100,7 +120,7 @@ body {
   align-items: center;
 }
 
-#repo-count-change{
+#repo-count-change {
   padding: 4px;
   margin-left: 7px;
   height: 20px;
@@ -108,7 +128,7 @@ body {
   background: #fff;
   color: #a3a3a3;
   font: inherit;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
   border: 0;
   outline: 0;
 }
@@ -138,16 +158,25 @@ body {
 
 .page-shift-container li {
   display: block;
-  border: 1px solid #ccc;
+  color: #a3a3a3;
+  background-color: #fff;
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
   padding: 1px 5px;
   cursor: pointer;
-  /* margin: 0 5px;  */
 }
 #prev,
 #next {
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    /* margin: 0 5px;  */
+  color: #a3a3a3;
+  background-color: #fff;
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  border: 0;
+  outline: 0;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 /* Loader CSS */
@@ -162,8 +191,12 @@ body {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive Styles */
@@ -186,9 +219,5 @@ body {
 
   .repos {
     grid-template-columns: 1fr; /* Change to a single column layout */
-  }
-
-  .repository button {
-    margin-right: 0;
   }
 }

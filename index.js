@@ -67,6 +67,7 @@ const getUserData = async (current) => {
   if (!fetchData.ok) {
     $(".home-page").html("<p>User not Found</p>");
     $(".home-page").css("text-align", "center");
+    $(".load #loader").remove();
     return;
   }
   const totalRepos = userData.public_repos;
@@ -76,6 +77,8 @@ const getUserData = async (current) => {
   $(".url").html(
     `<p><img src="Assets/link.png" height="13px"/> <a href="${userData.html_url}" target="_blank" style="text-decoration: none; color: inherit; cursor: pointer;">${userData.html_url}</a></p>`
   );
+
+  $(".profile").css("visibility","visible");
   $("#image").html(`<img src=${userData.avatar_url} />`);
   $("#details").html(`<h1>${userData.name}</h1>
     <p>${userData.bio}</p>
@@ -177,6 +180,7 @@ function handleListItemClick(event) {
 
   $(".list").css("background-color", ""); // Reset background color for all list items
   $(event.target).css("background-color", "#7f8ff4");
+  $(event.target).css("color", "white");
 }
 
 $("#repo-count-change").on("change",(event)=>{
