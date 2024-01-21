@@ -6,6 +6,54 @@ let count = 0;
 let totalPages = null;
 let repoContainer = $(".repos");
 
+let activeTab = 1;
+const prevButton = $("#prev");
+const nextButton = $("#next");
+
+prevButton.on("click", () => {
+  currentPage = currentPage > 1 ? currentPage - 1 : 1;
+  getUserData(currentPage);
+
+  if (activeTab === 1) {
+    return;
+  }
+
+  const prevTab = $("#list-" + activeTab);
+  prevTab.css("background-color", "white");
+
+  activeTab--;
+
+  const nextTab = $("#list-" + activeTab);
+  nextTab.css("background-color", "#7f8ff4");
+});
+
+nextButton.on("click", () => {
+  currentPage = currentPage < totalPages ? currentPage + 1 : totalPages;
+  getUserData(currentPage);
+
+  if (activeTab === totalPages) {
+    return;
+  }
+
+  var prevTab = $("#list-" + activeTab);
+  prevTab.css("background-color", "white");
+
+  activeTab++;
+
+  var nextTab = $("#list-" + activeTab);
+  nextTab.css("background-color", "#7f8ff4");
+});
+
+function clearDefault() {
+  $(".page-shift-container").empty();
+  // $(".home-page").empty();
+  // console.log("Hey");
+  count = 0;
+  currentPage=1;
+  activeTab=1;
+  getUserData();
+}
+
 const getUserData = async (current) => {
   const user = $("#search-box").val();
   const fetchData = await fetch(API + user);
@@ -85,6 +133,7 @@ function createRequiredPage(totalPage) {
     for (let i = 1; i <= num; ++i) {
       const listItem = $("<li></li>");
       listItem.addClass("list").text(i);
+      listItem.attr("id", "list-" + i);
       pageShiftContainer.append(listItem);
       listItem.on("click", handleListItemClick);
     }
@@ -92,7 +141,9 @@ function createRequiredPage(totalPage) {
   count++;
 }
 
-function handleListItemClick(event){
+function handleListItemClick(event) {
+  activeTab = parseInt($(event.target).attr("id").slice(5));
+  // console.log(activeTab);
   const innerText = $(event.target).text();
   getUserData(innerText);
   currentPage = innerText;
