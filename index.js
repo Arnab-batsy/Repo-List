@@ -49,8 +49,8 @@ function clearDefault() {
   // $(".home-page").empty();
   // console.log("Hey");
   count = 0;
-  currentPage=1;
-  activeTab=1;
+  currentPage = 1;
+  activeTab = 1;
   getUserData();
 }
 
@@ -99,10 +99,11 @@ const getUserData = async (current) => {
   createRequiredPage(totalPages);
 };
 
-function displayRepos(repos) {
+async function displayRepos(repos) {
   repoContainer.html("");
-
-  repos.forEach((param) => {
+  // console.log(repos.length);
+  for (let i = 0; i < repos.length; i++) {
+    let param = repos[i];
     const repoElement = $("<div></div>");
     repoElement.addClass("repository");
 
@@ -116,13 +117,34 @@ function displayRepos(repos) {
     description.text(param.description || "No description available.");
     repoElement.append(description);
 
-    const languageButton = $("<button></button>");
-    languageButton.text(param.language || "Not specified");
-    repoElement.append(languageButton);
+    //Language url- "https://api.github.com/repos/Arnab-batsy/Fun-Assembly/languages",
+
+    const apiCall = await fetch(
+      "https://api.github.com/repos/" +
+        param.owner.login +
+        "/" +
+        param.name +
+        "/languages"
+    );
+    var langURL = await apiCall.json();
+    var langs = Object.keys(langURL);
+
+    if (langs.length === 0) {
+      const languageButton = $("<button></button>");
+      languageButton.text("Not specified");
+      repoElement.append(languageButton);
+    } else {
+      langs.forEach((language) => {
+        const languageButton = $("<button></button>");
+        languageButton.text(language);
+        repoElement.append(languageButton);
+      });
+    }
 
     repoContainer.append(repoElement);
     repoArr.push(repoElement);
-  });
+  }
+  // });
 }
 
 function createRequiredPage(totalPage) {

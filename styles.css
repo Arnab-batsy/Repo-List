@@ -41,6 +41,7 @@ body {
 }
 .repository button {
   padding: 10px 20px;
+  margin-right: 10px;
   background-color: #7f8ff4;
   color: aliceblue;
   font-weight: 800;
