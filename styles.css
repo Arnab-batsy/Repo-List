@@ -88,3 +88,40 @@ body {
   outline: 0;
   padding: 22px 18px;
 }
+
+/* Pagination */
+.page-containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+/* --------------------- */
+.page-containers > * {
+  display: none;
+}
+
+.page-containers.show-children > * {
+  display: flex;
+}
+.page-shift-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+}
+
+.page-shift-container li {
+  display: block;
+  border: 1px solid #ccc;
+  padding: 1px 5px;
+  cursor: pointer;
+  /* margin: 0 5px;  */
+}
+#prev,
+#next {
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    /* margin: 0 5px;  */
+}
