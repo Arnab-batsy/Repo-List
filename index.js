@@ -1,6 +1,6 @@
 const API = "https://api.github.com/users/";
 let currentPage = 1;
-const perPage = 10;
+var perPage = 10;
 let repoArr = [];
 let count = 0;
 let totalPages = null;
@@ -51,6 +51,7 @@ function clearDefault() {
   count = 0;
   currentPage = 1;
   activeTab = 1;
+  // console.log(perPage);
   getUserData();
 }
 
@@ -66,7 +67,7 @@ const getUserData = async (current) => {
     return;
   }
   const totalRepos = userData.public_repos;
-  totalPages = Math.ceil(totalRepos / 10);
+  totalPages = Math.ceil(totalRepos / perPage);
   // console.log(totalPages);
 
   $(".url").html(
@@ -173,3 +174,12 @@ function handleListItemClick(event) {
   $(".list").css("background-color", ""); // Reset background color for all list items
   $(event.target).css("background-color", "#7f8ff4");
 }
+
+$("#repo-count-change").on("change",(event)=>{
+    perPage=$(event.target).val();
+    if(perPage>100){
+      perPage=100;
+      $(event.target).val("100");
+    }
+    clearDefault();
+});

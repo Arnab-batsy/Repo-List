@@ -42,6 +42,7 @@ body {
 .repository button {
   padding: 10px 20px;
   margin-right: 10px;
+  margin-bottom: 10px;
   background-color: #7f8ff4;
   color: aliceblue;
   font-weight: 800;
@@ -88,6 +89,28 @@ body {
   border: 0;
   outline: 0;
   padding: 22px 18px;
+}
+
+.repo-count{
+  color: #a3a3a3;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#repo-count-change{
+  padding: 4px;
+  margin-left: 7px;
+  height: 20px;
+  width: 3%;
+  background: #fff;
+  color: #a3a3a3;
+  font: inherit;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+  border: 0;
+  outline: 0;
 }
 
 /* Pagination */
