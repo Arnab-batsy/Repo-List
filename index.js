@@ -11,6 +11,7 @@ const prevButton = $("#prev");
 const nextButton = $("#next");
 
 prevButton.on("click", () => {
+  $(".load").append(`<div id="loader"></div>`);
   currentPage = currentPage > 1 ? currentPage - 1 : 1;
   getUserData(currentPage);
 
@@ -28,6 +29,7 @@ prevButton.on("click", () => {
 });
 
 nextButton.on("click", () => {
+  $(".load").append(`<div id="loader"></div>`);
   currentPage = currentPage < totalPages ? currentPage + 1 : totalPages;
   getUserData(currentPage);
 
@@ -46,6 +48,7 @@ nextButton.on("click", () => {
 
 function clearDefault() {
   $(".page-shift-container").empty();
+  $(".load").append(`<div id="loader"></div>`);
   // $(".home-page").empty();
   // console.log("Hey");
   count = 0;
@@ -95,9 +98,10 @@ const getUserData = async (current) => {
     repoContainer.html("No repositories found for the user");
     return;
   }
-
+  
   displayRepos(data);
   createRequiredPage(totalPages);
+  $(".load #loader").remove();
 };
 
 async function displayRepos(repos) {
@@ -146,7 +150,7 @@ async function displayRepos(repos) {
     repoArr.push(repoElement);
   }
   // });
-}
+};
 
 function createRequiredPage(totalPage) {
   const pageShiftContainer = $(".page-shift-container");
