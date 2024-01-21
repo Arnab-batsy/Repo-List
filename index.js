@@ -67,6 +67,7 @@ const getUserData = async (current) => {
   if (!fetchData.ok) {
     $(".home-page").html("<p>User not Found</p>");
     $(".home-page").css("text-align", "center");
+    $(".page-containers").css("visibility","hidden");
     $(".load #loader").remove();
     return;
   }
