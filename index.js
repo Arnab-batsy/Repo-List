@@ -48,8 +48,8 @@ nextButton.on("click", () => {
 
 function clearDefault() {
   $(".page-shift-container").empty();
+  $(".page-containers").css("visibility","visible");
   $(".load").append(`<div id="loader"></div>`);
-  // $(".home-page").empty();
   // console.log("Hey");
   count = 0;
   currentPage = 1;
@@ -65,9 +65,12 @@ const getUserData = async (current) => {
   // console.log(userData);
 
   if (!fetchData.ok) {
-    $(".home-page").html("<p>User not Found</p>");
-    $(".home-page").css("text-align", "center");
+    $(".url").html("<p>User not Found!</p>");
     $(".page-containers").css("visibility","hidden");
+    $("#image").empty();
+    $("#details").empty();
+    $(".repos").empty();
+    $(".profile").css("visibility","hidden");
     $(".load #loader").remove();
     return;
   }

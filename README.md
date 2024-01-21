@@ -2,7 +2,7 @@
 
 The whole project has been created using pure HTML, CSS and JavaScript.<br>
 Library used- jQuery only!<br>
-<h3>Assumption: </h3><p>User can search the repositories of any user having a valid GitHub username in the search box.</p>
+<h3>Assumption: </h3><p>Users can search the repositories of any GitHub user by typing a valid GitHub username in the search box.</p>
 <h3>Requirement</h3>
 Device must be connected to the internet in order to enable the GitHub API to fetch the required data.
 <h2>Steps to Run</h2>
